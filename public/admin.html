@@ -1,0 +1,132 @@
+<div ng-controller = "adminCtrl">
+
+
+<script>$(function(){
+    $('#groups').on('change', function(){
+        var val = $(this).val();
+        var sub = $('#sub_groups');
+        $('option', sub).filter(function(){
+            if (
+                 $(this).attr('data-group') === val 
+              || $(this).attr('data-group') === 'SHOW'
+            ) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+    $('#groups').trigger('change');
+});
+</script>
+
+
+
+<div>
+<div class="container">
+		
+		<div class="login-box animated fadeInUp">
+<div class="box-header">
+				<h2>AdminPage</h2>
+			</div>
+
+<select id="groups" >
+    <option value=''>States</option>
+    <option value='Andhra Pradesh'>Andhra Pradesh</option>
+    <option value='Tamil Nadu'>Tamil Nadu</option>
+    <option value='Karnataka'>Karnataka</option>
+	    <option value='Kerala'>Kerala</option>
+<select>
+<select id="sub_groups" ng-model="dname">
+    <option data-group='SHOW' value=''>Districts</option>
+    <option data-group='Andhra Pradesh' value='East-godavari'>East-godavari</option>
+    <option data-group='Andhra Pradesh' value='Visakhapatnam'>Visakhapatnam</option>
+    <option data-group='Andhra Pradesh' value='Guntur'>Guntur</option>
+    <option data-group='Andhra Pradesh' value='Vijayawada'>Vijayawada</option>
+    <option data-group='Tamil Nadu' value='Chennai'>Chennai</option>
+    <option data-group='Tamil Nadu' value='Madurai'>Madurai</option>
+    <option data-group='Tamil Nadu' value='Coimbatore'>Coimbatore</option>
+    <option data-group='Tamil Nadu' value='Kanchipuram'>Kanchipuram</option>
+	 <option data-group='Karnataka' value='Banglore'>Banglore</option>
+	  <option data-group='Karnataka' value='Mangalore'>Mangalore</option>
+	 <option data-group='Karnataka' value='Raichur'>Raichur</option>
+    <option data-group='Karnataka' value='Bellary'>Bellary</option>
+    <option data-group='Kerala' value='Alapuzzha'>Alapuzzha</option>
+    <option data-group='Kerala' value='Cochin'>Cochin</option>
+    <option data-group='Kerala' value='Trivendrum'>Trivendrum</option>
+    <option data-group='Kerala' value='Ernakulam'>Ernakulam</option>
+<select>
+<br><br>
+<button ng-click="getPlaces()">Places to visit</button>
+<div ng-show="res2" ng-repeat="y in res2"><br>
+<center>Place: <input type="text" ng-value="y.Place" /><br></center>
+<center>Tourist No:<input type="text" ng-value="y.TouristNo" /><br></center>
+<center>Hotels Available:<input type="text" ng-value="y.HotelsAvailable"/> <br></center>
+<center>Image:<img width="20%" height="20%" ng-src="/uploads/{{y.placeimg}}"/><br></center>
+</div>
+</div>
+
+<script>
+ function display_alert()
+ {
+ alert("Inserted");
+ }
+ </script>
+
+
+<div>
+<div class="container">
+		
+		<div class="login-box animated fadeInUp">
+<div class="box-header">
+				<h2>Add Some More places</h2>
+			</div>
+<button ng-click="addPlaces()">Add Places</button>
+<div ng-show="IVisible">
+<form action="http://localhost:7000/userreg" method="post" enctype="multipart/form-data" >
+Place: <input type="text" name="place" id="place">
+			<br/>
+			TouristNo: <input type="text" name="tourist" id="tourist">
+			<br/>
+		HotelsAvailable:  <input type="text" name="hotels" id="hotels">
+			<br/>
+			
+			
+			States: <select id="groups" >
+    <option value=''>States</option>
+    <option value='Andhra Pradesh'>Andhra Pradesh</option>
+    <option value='Tamil Nadu'>Tamil Nadu</option>
+    <option value='Karnataka'>Karnataka</option>
+	    <option value='Kerala'>Kerala</option>
+<select>
+   Districts: <select id="sub_groups" name = "dis">
+    <option data-group='SHOW' value=''>Districts</option>
+    <option data-group='Andhra Pradesh' value='East-godavari'>East-godavari</option>
+    <option data-group='Andhra Pradesh' value='Visakhapatnam'>Visakhapatnam</option>
+    <option data-group='Andhra Pradesh' value='Guntur'>Guntur</option>
+    <option data-group='Andhra Pradesh' value='Vijayawada'>Vijayawada</option>
+    <option data-group='Tamil Nadu' value='Chennai'>Chennai</option>
+    <option data-group='Tamil Nadu' value='Madurai'>Madurai</option>
+    <option data-group='Tamil Nadu' value='Coimbatore'>Coimbatore</option>
+    <option data-group='Tamil Nadu' value='Kanchipuram'>Kanchipuram</option>
+	 <option data-group='Karnataka' value='Banglore'>Banglore</option>
+	  <option data-group='Karnataka' value='Mangalore'>Mangalore</option>
+	 <option data-group='Karnataka' value='Raichur'>Raichur</option>
+    <option data-group='Karnataka' value='Bellary'>Bellary</option>
+    <option data-group='Kerala' value='Alapuzzha'>Alapuzzha</option>
+    <option data-group='Kerala' value='Cochin'>Cochin</option>
+    <option data-group='Kerala' value='Trivendrum'>Trivendrum</option>
+    <option data-group='Kerala' value='Ernakulam'>Ernakulam</option>
+<select>
+
+ Image:<input type="file" name="userreg" id="userreg"></input>
+ <button type="submit" id="hello" value="submit" onclick="display_alert()">submit</button>
+ 
+ 
+ 
+</form>
+</div>
+</div>
+</div>
+</div>
+

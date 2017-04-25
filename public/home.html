@@ -1,0 +1,103 @@
+<div ng-controller="homeCtrl">
+
+<script>$(function(){
+    $('#groups').on('change', function(){
+        var val = $(this).val();
+        var sub = $('#sub_groups');
+        $('option', sub).filter(function(){
+            if (
+                 $(this).attr('data-group') === val 
+              || $(this).attr('data-group') === 'SHOW'
+            ) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+    $('#groups').trigger('change');
+});
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><center><p><b><font size="30">Welcome to Trip Advisor</font></b></p></center>
+<div>
+<center><button ng-click="profile()">My Profile</button>
+
+<div ng-show="prof" ng-repeat="prof in prof">
+	<div class="container">
+		
+		<div class="login-box animated fadeInUp">
+<div class="box-header">
+				<h2>Profile</h2>
+			</div>
+ <label for="Name">Name</label></br>
+  <input type="text" ng-value="prof.uname" readonly ><br>
+   <label for="Email">Email</label></br>
+  <input type="text" ng-value="prof.email" readonly ><br>
+  <label for="PhNo">PhNo</label></br>
+<input type="text" ng-value="prof.pno" readonly ><br></center>
+ </div>
+
+</div>
+
+
+<br><br><br>
+<div>
+<div class="container">
+		
+		<div class="login-box animated fadeInUp">
+<div class="box-header">
+				<h2>Enjoy your Trip</h2>
+			</div>
+<center><button ng-click="dets()">Trip Details</button><br>
+
+<div ng-show="IsVisible">
+
+<select id="groups" >
+    <option value=''>States</option>
+    <option value='Andhra Pradesh'>Andhra Pradesh</option>
+    <option value='Tamil Nadu'>Tamil Nadu</option>
+    <option value='Karnataka'>Karnataka</option>
+	    <option value='Kerala'>Kerala</option>
+<select>
+<select id="sub_groups" ng-model="dname">
+    <option data-group='SHOW' value=''>Districts</option>
+    <option data-group='Andhra Pradesh' value='East-godavari'>East-godavari</option>
+    <option data-group='Andhra Pradesh' value='Visakhapatnam'>Visakhapatnam</option>
+    <option data-group='Andhra Pradesh' value='Guntur'>Guntur</option>
+    <option data-group='Andhra Pradesh' value='Vijayawada'>Vijayawada</option>
+    <option data-group='Tamil Nadu' value='Chennai'>Chennai</option>
+    <option data-group='Tamil Nadu' value='Madurai'>Madurai</option>
+    <option data-group='Tamil Nadu' value='Coimbatore'>Coimbatore</option>
+    <option data-group='Tamil Nadu' value='Kanchipuram'>Kanchipuram</option>
+	 <option data-group='Karnataka' value='Banglore'>Banglore</option>
+	  <option data-group='Karnataka' value='Mangalore'>Mangalore</option>
+	 <option data-group='Karnataka' value='Raichur'>Raichur</option>
+    <option data-group='Karnataka' value='Bellary'>Bellary</option>
+    <option data-group='Kerala' value='Alapuzzha'>Alapuzzha</option>
+    <option data-group='Kerala' value='Cochin'>Cochin</option>
+    <option data-group='Kerala' value='Trivendrum'>Trivendrum</option>
+    <option data-group='Kerala' value='Ernakulam'>Ernakulam</option>
+<select>
+
+<button ng-click="getPlaces()">Places to visit</button>
+<div ng-show="res2" ng-repeat="y in res2"><br>
+<center>Place: <input type="text" ng-value="y.Place" /><br></center>
+<center>Tourist No:<input type="text" ng-value="y.TouristNo" /><br></center>
+<center>Hotels Available:<input type="text" ng-value="y.HotelsAvailable"/> <br></center>
+<center>Image:<img width="20%" height="20%" ng-src="/uploads/{{y.placeimg}}"/><br></center>
+</div>
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+

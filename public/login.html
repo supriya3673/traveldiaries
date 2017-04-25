@@ -1,0 +1,26 @@
+
+<div ng-controller="loginCtrl">
+	<div class="container">
+		<div class="top">
+			<h1 id="title">Travel Diaries</h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Log In</h2>
+			</div>
+			<label for="username">Username</label>
+			<br/>
+			<input type="text" id="username" ng-model="user">
+			<br/>
+			<label for="password">Password</label>
+			<br/>
+			<input type="password" id="password" ng-model="pass">
+			<br/>
+			<button type="submit" ng-click="login()">Sign In</button>
+			<br/><br>
+     <a ng-click="sign()"><p class="small">SignUp</p></a>
+			<br/>
+ 			
+		</div>
+	</div>
+</div>
